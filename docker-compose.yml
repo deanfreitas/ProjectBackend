@@ -1,0 +1,33 @@
+version: "3"
+services:
+  app:
+    container_name: app
+    restart: always
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - backend-node-network
+
+  db:
+    container_name: mysql
+    restart: always
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "root"
+      MYSQL_DATABASE: "backend"
+    networks:
+      - backend-node-network
+
+networks:
+  backend-node-network:
+    driver: bridge

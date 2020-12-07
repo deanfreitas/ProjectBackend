@@ -1,0 +1,234 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "ProjectBackend",
+        "description": "Project Backend using Spring Boot and MySql",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080/api/v1"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "get": {
+                "summary": "Get all users",
+                "operationId": "",
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/userResponse"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "summary": "Get one user",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "User ID",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/userResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update User",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "User ID",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/userRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/userResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete User",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "User ID",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/user": {
+            "post": {
+                "summary": "Create User",
+                "operationId": "",
+                "parameters": [
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/userRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "userResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "firstname": {
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "age": {
+                        "type": "integer"
+                    },
+                    "gender": {
+                        "type": "string",
+                        "enum": [
+                            "Masculino",
+                            "Feminino"
+                        ]
+                    }
+                },
+                "example": {
+                    "id": 1,
+                    "firstname": "Test2",
+                    "lastname": "Test2",
+                    "email": "test1@test.com",
+                    "age": 30,
+                    "gender": "Masculino"
+                }
+            },
+            "userRequest": {
+                "type": "object",
+                "properties": {
+                    "firstname": {
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "age": {
+                        "type": "integer"
+                    },
+                    "gender": {
+                        "type": "string",
+                        "enum": [
+                            "Masculino",
+                            "Feminino"
+                        ]
+                    }
+                },
+                "example": {
+                    "firstname": "Test2",
+                    "lastname": "Test2",
+                    "email": "test1@test.com",
+                    "age": 30,
+                    "gender": "Masculino"
+                },
+                "required": [
+                    "id",
+                    "firstname",
+                    "lastname",
+                    "email",
+                    "age",
+                    "gender"
+                ]
+            }
+        }
+    }
+}
