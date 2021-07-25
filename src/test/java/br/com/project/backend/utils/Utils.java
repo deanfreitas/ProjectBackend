@@ -1,8 +1,9 @@
 package br.com.project.backend.utils;
 
-import br.com.project.backend.enums.Gender;
-import br.com.project.backend.persistence.model.Users;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.com.project.backend.enums.Gender;
+import br.com.project.backend.model.Users;
 
 public class Utils {
 

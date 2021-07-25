@@ -1,6 +1,9 @@
 package br.com.project.backend.repository;
 
-import br.com.project.backend.persistence.model.Users;
+import static br.com.project.backend.utils.Utils.getUsers;
+
+import java.util.Optional;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Optional;
-
-import static br.com.project.backend.utils.Utils.getUsers;
+import br.com.project.backend.model.Users;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

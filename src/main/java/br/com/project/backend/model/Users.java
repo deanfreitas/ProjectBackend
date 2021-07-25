@@ -1,10 +1,16 @@
-package br.com.project.backend.persistence.model;
+package br.com.project.backend.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import br.com.project.backend.enums.Gender;
 import br.com.project.backend.utils.UsersMapper;
-
-import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
